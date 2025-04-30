@@ -1,0 +1,15 @@
+[Unit]
+Description=Netris Server
+After=network.target
+
+[Service]
+User=vagrant
+WorkingDirectory=/home/vagrant/
+ExecStart=/home/vagrant/netris-server -listen-tcp 192.168.88.102:2223 -listen-ssh 192.168.88.102:2222 -netris /home/vagrant/netris
+Restart=on-failure
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=netris-server
+
+[Install]
+WantedBy=multi-user.target
